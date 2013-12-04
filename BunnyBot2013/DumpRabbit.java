@@ -17,10 +17,12 @@ public class DumpRabbit extends CommandBase {
 
     // Called just before this Command runs the first time
     protected void initialize() {
+        //check state, set 0
     }
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
+        //check state, set 1
     }
 
     // Make this return true when this Command no longer needs to run execute()
@@ -30,6 +32,7 @@ public class DumpRabbit extends CommandBase {
 
     // Called once after isFinished returns true
     protected void end() {
+        //set piston 0
     }
 
     // Called when another command which requires one or more of the same
