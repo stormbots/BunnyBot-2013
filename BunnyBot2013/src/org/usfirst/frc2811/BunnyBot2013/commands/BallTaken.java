@@ -16,7 +16,7 @@ public class BallTaken extends Command {
         requires(Robot.ballManager);
         previousState=false;
         currentState=false;
-        pickupTimer=new ballPickupTimer();
+        pickupTimer=new BallPickupTimer();
     }
 
     // Called just before this Command runs the first time
