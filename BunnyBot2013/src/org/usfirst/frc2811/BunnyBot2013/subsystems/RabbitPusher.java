@@ -5,23 +5,26 @@
  */
 package org.usfirst.frc2811.BunnyBot2013.subsystems;
 
+import edu.wpi.first.wpilibj.Solenoid;
 import edu.wpi.first.wpilibj.command.Subsystem;
+import org.usfirst.frc2811.BunnyBot2013.RobotMap;
 
 /**
  *
  * @author 128925
  */
-public class PushRabbit extends Subsystem {
+public class RabbitPusher extends Subsystem {
     // Put methods for controlling this subsystem
     // here. Call these from Commands.
+    Solenoid rabbitPusher = RobotMap.rabbitPusher;
 
     public void initDefaultCommand() {
         // Set the default command for a subsystem here.
         //setDefaultCommand(new MySpecialCommand());
     }
     public void pushRabbit(){
-        //if(piston.get()==false){
-           //piston.set()=true;
-        //}         
+        if(rabbitPusher.get()==false){
+           rabbitPusher.set(true);
+        }         
     }
 }
