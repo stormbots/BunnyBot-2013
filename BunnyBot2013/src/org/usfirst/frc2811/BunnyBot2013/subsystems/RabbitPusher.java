@@ -23,8 +23,6 @@ public class RabbitPusher extends Subsystem {
         //setDefaultCommand(new MySpecialCommand());
     }
     public void pushRabbit(){
-        if(rabbitPusher.get()==false){
-           rabbitPusher.set(true);
-        }         
+        rabbitPusher.set(true);        
     }
 }
