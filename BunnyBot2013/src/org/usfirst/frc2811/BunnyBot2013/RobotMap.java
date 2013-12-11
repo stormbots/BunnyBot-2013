@@ -30,8 +30,8 @@ public class RobotMap {
     public static SpeedController chassisDriveMotor3;
     public static SpeedController chassisDriveMotor4;
     public static RobotDrive chassisRobotDrive41;
-    public static DoubleSolenoid chassisGearShifter1;
-    public static DoubleSolenoid chassisGearShifter2;
+  //  public static DoubleSolenoid chassisGearShifter1;
+  //  public static DoubleSolenoid chassisGearShifter2;
     public static CANJaguar ballShooterShooterSpeedMotor;
     public static Encoder ballShooterShooterSpeedSensor;
     public static SpeedController ballManagerIntakeMotor;
@@ -65,10 +65,10 @@ public class RobotMap {
         chassisRobotDrive41.setSensitivity(0.5);
         chassisRobotDrive41.setMaxOutput(1.0);
 
-        chassisGearShifter1 = new DoubleSolenoid(1, 2, 3);      
+      //  chassisGearShifter1 = new DoubleSolenoid(1, 2, 3);      
 	
         
-        chassisGearShifter2 = new DoubleSolenoid(1, 4, 5);      
+     //   chassisGearShifter2 = new DoubleSolenoid(1, 4, 5);      
 	
         
         try { 
