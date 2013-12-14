@@ -40,7 +40,7 @@ public class LaunchSpeedControl extends Subsystem {
      */
     public double calculate(double theta){
         //maths here
-        double alpha=35.0;//degrees, launch angle
+        double alpha=35.0;//degrees, launch angle, not real value
         double cosa = Math.cos(Math.toDegrees(alpha));// cosine of alpha
         //double theta = 45.0;// will be called from camera when code is ready, should not be a constant
         double tant = Math.tan(Math.toDegrees(theta));// tangent of theta, first calculation for equations we wrote
@@ -50,6 +50,7 @@ public class LaunchSpeedControl extends Subsystem {
         double sina = Math.sin(Math.toDegrees(alpha));
         double equa1 = ((sina*cosa)/(hcam/tant));//sin of alpha times cos of alpha divided by distance (hight of camera/tangent of theta)
         double equa2 = ((grav*cosa2)/(2*(hcam/tant)));//gravity times cos squared divided by two times the distance(hight of camera/tangent of theta)
+        
         velocity = Math.sqrt((hcam)/(equa1-equa2)); 
         angvelocity = velocity/rad;
         System.out.println(angvelocity);
