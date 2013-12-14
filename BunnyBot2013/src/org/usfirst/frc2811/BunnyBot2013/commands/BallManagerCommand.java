@@ -5,8 +5,12 @@
  */
 package org.usfirst.frc2811.BunnyBot2013.commands;
 
+import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.command.Command;
 import org.usfirst.frc2811.BunnyBot2013.Robot;
+import org.usfirst.frc2811.BunnyBot2013.RobotMap;
+import org.usfirst.frc2811.BunnyBot2013.commands.BallTaken;
+
 
 /**
  *
@@ -35,12 +39,14 @@ public class BallManagerCommand extends Command {
         currentSwitchState = Robot.ballManager.getIntakeSensor();
         if (previousSwitchState==false&&currentSwitchState==true){
            //disable ball capture
+            double liftTime; 
+            liftTime = Timer.get();
            Robot.ballManager.movePiston(true); //true = retracted
-           //stop motors
-                //intakeMotor.set(0); //Turn off intake motors
-                //wait an interminable amount of time
-                //IMPORTANT--pickUpTime=cRio.time
-                //turn off motors
+           if(liftTimer-pickupTimer>=3){
+                   RobotMap.ballManagerIntakeMotor.set(0); //Turn off intake motors
+           }
+               
+                
             
             }
             previousSwitchState=currentSwitchState;

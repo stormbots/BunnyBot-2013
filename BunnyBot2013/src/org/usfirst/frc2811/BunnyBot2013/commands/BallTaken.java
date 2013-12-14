@@ -1,6 +1,7 @@
 
 package org.usfirst.frc2811.BunnyBot2013.commands;
 
+import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.command.Command;
 import org.usfirst.frc2811.BunnyBot2013.Robot;
 
@@ -8,7 +9,7 @@ import org.usfirst.frc2811.BunnyBot2013.Robot;
 public class BallTaken extends Command {
     private boolean previousState;
     private boolean currentState;
-    Command pickupTimer;
+    double pickupTimer;
     
     public BallTaken() {
         // Use requires() here to declare subsystem dependencies
@@ -16,7 +17,7 @@ public class BallTaken extends Command {
         requires(Robot.ballManager);
         previousState=false;
         currentState=false;
-        pickupTimer=new BallPickupTimer();
+        //pickupTimer=new BallPickupTimer();
     }
 
     // Called just before this Command runs the first time
@@ -28,7 +29,7 @@ public class BallTaken extends Command {
         currentState=Robot.ballManager.getIntakeSensor();
         if(!previousState&&currentState){
           Robot.ballManager.incrementInternalCountUp();
-          pickupTimer.start();
+          pickupTimer=Timer.get();
         }
         previousState=currentState;
     }

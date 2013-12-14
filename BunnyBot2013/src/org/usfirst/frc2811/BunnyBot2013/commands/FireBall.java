@@ -11,6 +11,7 @@
 
 package org.usfirst.frc2811.BunnyBot2013.commands;
 import edu.wpi.first.wpilibj.command.CommandGroup;
+import org.usfirst.frc2811.BunnyBot2013.Robot;
 
 /**
  *
@@ -34,5 +35,11 @@ public class FireBall extends CommandGroup {
         // e.g. if Command1 requires chassis, and Command2 requires arm,
         // a CommandGroup containing them would require both the chassis and the
         // arm.
+        //public static DigitalInput ballManagerBallExitSensor;
+        int exitCount = Robot.ballManager.ballManagerExitSensor.get;
+        if(exitCount>=1){
+            Robot.ballManager.ballcount--;
+                                                
+        }
     }
 }
