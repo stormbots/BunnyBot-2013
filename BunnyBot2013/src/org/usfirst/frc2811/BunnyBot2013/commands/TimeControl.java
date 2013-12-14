@@ -1,38 +1,36 @@
-
+/*
+ * To change this template, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package org.usfirst.frc2811.BunnyBot2013.commands;
 
 import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.command.Command;
 import org.usfirst.frc2811.BunnyBot2013.Robot;
 
-
-public class BallTaken extends Command {
-    private boolean previousState;
-    private boolean currentState;
-    double pickupTimer;
-    Timer timer;
+/** This command will find the timer, set it to run, then every update, set the value inside subsystem Timer.
+ *
+ * @author Kelson
+ */
+public class TimeControl extends Command {
+    private Timer Timer;
+    double time;
     
-    public BallTaken() {
+    public TimeControl() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
-        requires(Robot.ballManager);
-        previousState=false;
-        currentState=false;
-        //pickupTimer=new BallPickupTimer();
+        Timer = new Timer();
     }
 
     // Called just before this Command runs the first time
     protected void initialize() {
+        Timer.start();
     }
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-        currentState=Robot.ballManager.getIntakeSensor();
-        if(!previousState&&currentState){
-          Robot.ballManager.incrementInternalCountUp();
-          pickupTimer=;
-        }
-        previousState=currentState;
+        Robot.timer.setTime(Timer.get());
+        
     }
 
     // Make this return true when this Command no longer needs to run execute()
