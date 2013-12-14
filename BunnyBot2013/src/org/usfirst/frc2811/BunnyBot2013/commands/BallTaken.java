@@ -9,7 +9,7 @@ import org.usfirst.frc2811.BunnyBot2013.Robot;
 public class BallTaken extends Command {
     private boolean previousState;
     private boolean currentState;
-    double pickupTimer;
+    public double pickupTimer;
     Timer timer;
     
     public BallTaken() {
@@ -30,7 +30,7 @@ public class BallTaken extends Command {
         currentState=Robot.ballManager.getIntakeSensor();
         if(!previousState&&currentState){
           Robot.ballManager.incrementInternalCountUp();
-          pickupTimer=;
+          pickupTimer=Robot.timer.get();
         }
         previousState=currentState;
     }
