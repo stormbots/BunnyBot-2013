@@ -32,7 +32,7 @@ public class RobotMap {
     public static RobotDrive chassisRobotDrive41;
   //  public static DoubleSolenoid chassisGearShifter1;
   //  public static DoubleSolenoid chassisGearShifter2;
-  //  public static CANJaguar ballShooterShooterSpeedMotor;
+    //public static CANJaguar ballShooterShooterSpeedMotor;
     public static Encoder ballShooterShooterSpeedSensor;
     public static SpeedController ballManagerIntakeMotor;
     public static DigitalInput ballManagerIntakeSensor;
