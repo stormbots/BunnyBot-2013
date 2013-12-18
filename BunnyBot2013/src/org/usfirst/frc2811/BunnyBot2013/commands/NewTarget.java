@@ -16,9 +16,11 @@ public class NewTarget extends Command {
     private int CHANGETARGETLEFT=0;
     private int CHANGETARGETRIGHT=1;
     private int WAITFORTARGET=2;
-    private int limitdetected=3;
-    private int tracktarget=4;
-    private int manual=5;
+ 
+    private int tracktarget=3;
+    private int manual=4;
+    public int beta = 0;  //angle variables
+    private int oldbeta = 0;//angle variables
     
     
     public NewTarget() {
@@ -37,17 +39,31 @@ public class NewTarget extends Command {
         //State machine!
         if(state==CHANGETARGETLEFT){
            RobotMap.towerRotateTowerRotateMotor.set(1); 
-            //make motor go left
+            //make the motor go left
+           if ((Math.abs(beta)==beta)!= (Math.abs(oldbeta)==(oldbeta))){
+           state=tracktarget;
+           }
         }
         else if (state==CHANGETARGETRIGHT){
             RobotMap.towerRotateTowerRotateMotor.set(0);
+             if ((Math.abs(beta)==beta)!= (Math.abs(oldbeta)==(oldbeta))){
+           state=tracktarget;
+           if(limitswitch==true){
+               RobotMap.towerRotateTowerRotateMotor.set(1); //turn left
+               state = WAITFORTARGET;
+           }}
+            //make the motor go right
         }
         else if(state==manual){
             
         }
-        else if (state==limitdetected){
+        else if (state==WAITFORTARGET){
+            if (beta!=5000){}// magic arbtrary number
+            
         }
+        
         else if (state==tracktarget){
+            
         }
         else{
             //ugh oh, something went wrong, go back
