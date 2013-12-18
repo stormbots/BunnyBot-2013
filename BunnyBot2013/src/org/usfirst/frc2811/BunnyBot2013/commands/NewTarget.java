@@ -42,10 +42,13 @@ public class NewTarget extends Command {
             //make the motor go left
            if ((Math.abs(beta)==beta)!= (Math.abs(oldbeta)==(oldbeta))){
            state=tracktarget;
+            if(limitswitch==true){
+               RobotMap.towerRotateTowerRotateMotor.set(-1); //turn right
+               state = WAITFORTARGET;
            }
         }
         else if (state==CHANGETARGETRIGHT){
-            RobotMap.towerRotateTowerRotateMotor.set(0);
+            RobotMap.towerRotateTowerRotateMotor.set(-1);
              if ((Math.abs(beta)==beta)!= (Math.abs(oldbeta)==(oldbeta))){
            state=tracktarget;
            if(limitswitch==true){
@@ -54,15 +57,24 @@ public class NewTarget extends Command {
            }}
             //make the motor go right
         }
-        else if(state==manual){
-            
-        }
+       
         else if (state==WAITFORTARGET){
-            if (beta!=5000){}// magic arbtrary number
+            if (beta!=5000){
+            }// magic arbtrary number
+            else {
+            state = tracktarget;
+            }
+        }
             
+        else if (state==manual){
+            //listen to joystick
         }
         
         else if (state==tracktarget){
+           
+          RobotMap.towerRotateTowerRotateMotor.set(beta/200);  
+             
+        }
             
         }
         else{
