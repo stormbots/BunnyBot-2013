@@ -16,6 +16,7 @@ import org.usfirst.frc2811.BunnyBot2013.commands.*;
 import edu.wpi.first.wpilibj.*;
 
 import edu.wpi.first.wpilibj.command.Subsystem;
+import org.usfirst.frc2811.BunnyBot2013.OI;
 
 
 /**
@@ -42,6 +43,18 @@ public class Chassis extends Subsystem {
 	
         // Set the default command for a subsystem here.
         //setDefaultCommand(new MySpecialCommand());
+        setDefaultCommand(new TeleopCommand());
     }
+    public void JoystickControl(Joystick stick) {
+        double a = stick.getRawAxis(OI.FORE_BACK_STICK);
+        a = (OI.LEFT_RIGHT_DIRECTION)? -a : a;
+        double b = stick.getRawAxis(OI.FORE_BACK_STICK);
+        b = (OI.LEFT_RIGHT_DIRECTION)? -b : b;
+        manualControl(a,b);
+    }
+    public void manualControl(double a, double b){
+        robotDrive41.arcadeDrive(a,b);
+    }
+
 }
 
