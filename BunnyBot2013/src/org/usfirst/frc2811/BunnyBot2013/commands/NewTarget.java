@@ -16,9 +16,9 @@ public class NewTarget extends Command {
     private int CHANGETARGETLEFT=0;
     private int CHANGETARGETRIGHT=1;
     private int WAITFORTARGET=2;
-    private //limitdetected
-            //tracktarget
-            //manual
+    private int limitdetected=3;
+    private int tracktarget=4;
+    private int manual=5;
     
     
     public NewTarget() {
@@ -45,12 +45,14 @@ public class NewTarget extends Command {
         else if(state==manual){
             
         }
-        //...
+        else if (state==limitdetected){
+        }
+        else if (state==tracktarget){
+        }
         else{
             //ugh oh, something went wrong, go back
             state=WAITFORTARGET;
-        }
-        }
+        } 
     }
 
     // Make this return true when this Command no longer needs to run execute()
