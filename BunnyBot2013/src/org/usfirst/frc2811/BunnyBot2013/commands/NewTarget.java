@@ -72,6 +72,7 @@ public class NewTarget extends Command {
         
         else if (state==tracktarget){
             
+            RobotMap.towerRotateTowerRotateMotor.set(beta/180);
         }
         else{
             //ugh oh, something went wrong, go back

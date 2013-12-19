@@ -41,6 +41,8 @@ public class TowerRotate extends Subsystem {
     private int encoder90Degrees;
     public double currentAngle;
     private int currentPosition;
+    private double beta;
+    
     
     //This is the angle we want to go to
     public double targetAngle;
@@ -56,6 +58,7 @@ public class TowerRotate extends Subsystem {
     }
     
     public void execute(){
+         
         //get the current number of ticks from the encoder
         currentPosition=RobotMap.towerRotateTowerRotateSensor.get();
         
@@ -73,7 +76,10 @@ public class TowerRotate extends Subsystem {
         else{
                 //Ok, so now we're in the normal range
                 //Let's see where we want to be, and where we should be
-                if(targetAngle<currentAngle){
+                beta=targetAngle-currentAngle;
+                RobotMap.towerRotateTowerRotateMotor.set(beta/180);        
+            
+            /*if(targetAngle<currentAngle){
                     turnLeft();
                 }//go counterclockwise
                 else if (targetAngle>currentAngle){
@@ -82,7 +88,7 @@ public class TowerRotate extends Subsystem {
                 else{
                     towerRotateMotor.set(0);
                 }//we're doing great! On target!
-                
+                */
         }
     //end of execute function    
     }
@@ -106,17 +112,13 @@ public class TowerRotate extends Subsystem {
         return degrees;
     }
     
-    public void turnAmount(double amt){
-        towerRotateMotor.set(amt);
-    }    
+    
     public void turnRight(){
         towerRotateMotor.set(MOTOR_SPEED);
     }
     public void turnLeft(){
         towerRotateMotor.set(-MOTOR_SPEED);
     }
-    public void stop(){
-        towerRotateMotor.set(0.0);
-    }
+    
 }
 
