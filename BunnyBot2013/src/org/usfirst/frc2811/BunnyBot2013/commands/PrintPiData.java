@@ -2,18 +2,19 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package org.usfirst.frc3946.UltimateAscent.commands;
+
 
 import edu.wpi.first.wpilibj.Timer;
+import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import java.io.IOException;
-import org.usfirst.frc3946.UltimateAscent.RobotMap;
+import org.usfirst.frc2811.BunnyBot2013.RobotMap;
 
 /**
  *
  * @author Gustave Michel
  */
-public class PrintPiData extends CommandBase {
+public class PrintPiData extends Command {
     private double currentTime = 0;
     private double previousCheckTime = 0;
     private double checkInterum = .4;

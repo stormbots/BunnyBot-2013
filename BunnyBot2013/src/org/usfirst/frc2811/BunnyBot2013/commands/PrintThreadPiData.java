@@ -2,21 +2,21 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package org.usfirst.frc3946.UltimateAscent.commands;
+package org.usfirst.frc2811.BunnyBot2013.commands;
 
+import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
-
 /**
  *
  * @author Gustave Michel
  */
-public class PrintThreadPiData extends CommandBase {
+public class PrintThreadPiData extends Command {
     private double lastTime;
     
     public PrintThreadPiData() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
-        requires(threadedberryPi);
+        requires(threadedBerryPi);
     }
 
     // Called just before this Command runs the first time

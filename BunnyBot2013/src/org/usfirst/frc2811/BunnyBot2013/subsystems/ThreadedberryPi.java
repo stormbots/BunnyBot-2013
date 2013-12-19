@@ -2,11 +2,11 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package org.usfirst.frc3946.UltimateAscent.subsystems;
+package org.usfirst.frc2811.BunnyBot2013.subsystems;
 
 import edu.wpi.first.wpilibj.command.Subsystem;
 import org.usfirst.frc3946.UltimateAscent.ThreadedPi;
-import org.usfirst.frc3946.UltimateAscent.commands.PrintThreadPiData;
+import org.usfirst.frc2811.BunnyBot2013.commands.PrintThreadPiData;
 
 /**
  *
