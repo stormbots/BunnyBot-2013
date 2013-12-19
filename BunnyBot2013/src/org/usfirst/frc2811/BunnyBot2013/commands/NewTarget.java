@@ -3,9 +3,11 @@
  * and open the template in the editor.
  */
 package org.usfirst.frc2811.BunnyBot2013.commands;
+import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.command.Command;
+import org.usfirst.frc2811.BunnyBot2013.Robot;
 import org.usfirst.frc2811.BunnyBot2013.RobotMap;
-    
+     
 /**
  *
  * @author Laurel Bingham
@@ -16,12 +18,12 @@ public class NewTarget extends Command {
     private int CHANGETARGETLEFT=0;
     private int CHANGETARGETRIGHT=1;
     private int WAITFORTARGET=2;
- 
     private int tracktarget=3;
     private int manual=4;
     public int beta = 0;  //angle variables
     private int oldbeta = 0;//angle variables
-    
+    DigitalInput limitSwitch = RobotMap.limitSwitch;
+    private boolean limiter = limitSwitch.get();
     
     public NewTarget() {
         // Use requires() here to declare subsystem dependencies
@@ -38,20 +40,26 @@ public class NewTarget extends Command {
     protected void execute() {
         //State machine!
         if(state==CHANGETARGETLEFT){
-           RobotMap.towerRotateTowerRotateMotor.set(1); 
+           RobotMap.towerRotateTowerRotateMotor.set(0); 
             //make the motor go left
            if ((Math.abs(beta)==beta)!= (Math.abs(oldbeta)==(oldbeta))){
            state=tracktarget;
+                if(Robot.towerRotate.currentAngle>=-90){
+                   Robot.towerRotate.targetAngle = (0-Math.abs(beta));
+                   state = WAITFORTARGET;
+                }
            }
+            //make the motor go left
         }
         else if (state==CHANGETARGETRIGHT){
             RobotMap.towerRotateTowerRotateMotor.set(0);
-             if ((Math.abs(beta)==beta)!= (Math.abs(oldbeta)==(oldbeta))){
+            if ((Math.abs(beta)==beta)!= (Math.abs(oldbeta)==(oldbeta))){
            state=tracktarget;
-           if(limitswitch==true){
-               RobotMap.towerRotateTowerRotateMotor.set(1); //turn left
-               state = WAITFORTARGET;
-           }}
+           if(Robot.towerRotate.currentAngle<=90){
+                Robot.towerRotate.targetAngle = Math.abs(beta);
+                state = WAITFORTARGET;
+                }
+           }
             //make the motor go right
         }
         else if(state==manual){
