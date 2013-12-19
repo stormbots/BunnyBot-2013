@@ -6,10 +6,17 @@
 package org.usfirst.frc2811.BunnyBot2013.commands;
 
 import edu.wpi.first.wpilibj.command.Command;
+import java.lang.Object;
+import java.io.OutputStream;
+import java.io.DataInput;
+import java.io.DataOutput;
+import java.io.DataOutputStream;
+import java.io.DataInputStream;
+
 
 /**
  *
- * @author 128925
+ * @author Austin Bryant
  */
 public class Network extends Command {
     
