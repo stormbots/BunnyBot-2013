@@ -57,7 +57,7 @@ public class TowerRotate extends Subsystem {
         //setDefaultCommand(new MySpecialCommand());
     }
     
-    public void execute454t6fd5(){//be descriptive
+    public void execute(){//be descriptive
          
         //get the current number of ticks from the encoder
         currentPosition=RobotMap.towerRotateTowerRotateSensor.get();
