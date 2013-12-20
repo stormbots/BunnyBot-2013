@@ -40,7 +40,7 @@ public class NewTarget extends Command {
     protected void execute() {
         //State machine!
         if(state==CHANGETARGETLEFT){
-           RobotMap.towerRotateTowerRotateMotor.set(0); 
+           RobotMap.towerRotateTowerRotateMotor.set(1); //might need to be negative
             //make the motor go left
            if ((Math.abs(beta)==beta)!= (Math.abs(oldbeta)==(oldbeta))){
            state=tracktarget;
@@ -52,7 +52,7 @@ public class NewTarget extends Command {
             //make the motor go left
         }
         else if (state==CHANGETARGETRIGHT){
-            RobotMap.towerRotateTowerRotateMotor.set(0);
+            RobotMap.towerRotateTowerRotateMotor.set(-1);//might need to be positive
             if ((Math.abs(beta)==beta)!= (Math.abs(oldbeta)==(oldbeta))){
            state=tracktarget;
            if(Robot.towerRotate.currentAngle<=90){

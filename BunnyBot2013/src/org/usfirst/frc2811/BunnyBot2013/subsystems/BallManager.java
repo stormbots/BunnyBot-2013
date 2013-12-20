@@ -34,6 +34,12 @@ public class BallManager extends Subsystem {
     return ballcount;
     //pointless
     }
+    public int decrementInternalCountDown(){
+        ballcount--;                
+    return ballcount;
+    //pointless
+    }
+   
     public int ballCountGet(){
         return ballcount;
     }

@@ -16,7 +16,7 @@ import org.usfirst.frc2811.BunnyBot2013.RobotMap;
  * @author 128925
  */
 public class BallManagerCommand extends Command {
-    int ballcount;
+    public int ballcount;
     boolean previousSwitchState;
     boolean currentSwitchState;
     private boolean previousState;

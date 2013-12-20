@@ -12,6 +12,7 @@
 package org.usfirst.frc2811.BunnyBot2013.commands;
 import edu.wpi.first.wpilibj.command.CommandGroup;
 import org.usfirst.frc2811.BunnyBot2013.Robot;
+import org.usfirst.frc2811.BunnyBot2013.RobotMap;
 
 /**
  *
@@ -23,6 +24,12 @@ public class FireBall extends CommandGroup {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
+        RobotMap.ballManagerIntakeMotor.set(.25);
+         int ballcount = Robot.ballManager.decrementInternalCountDown();
+        // turn on belt thingy
+        //decrese ball count from ball manager
+       
+        
     }
 
     // Make this return true when this Command no longer needs to run execute()
