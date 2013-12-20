@@ -13,11 +13,12 @@ import org.usfirst.frc2811.BunnyBot2013.RobotMap;
  *
  * @author Kelson
  */
-public class TeleopCommand extends Command {
+public class JoystickDriveControl extends Command {
     
-    public TeleopCommand() {
+    public JoystickDriveControl() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
+        requires(Robot.chassis);
     }
 
     // Called just before this Command runs the first time

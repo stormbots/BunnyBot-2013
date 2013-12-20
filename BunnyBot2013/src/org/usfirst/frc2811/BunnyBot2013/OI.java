@@ -79,7 +79,7 @@ public class OI {
         slowDownButton = new JoystickButton(joystick,3);
         
         FORE_BACK_STICK = 1;
-        LEFT_RIGHT_STICK = 4;
+        LEFT_RIGHT_STICK = 2;
         FORE_BACK_DIRECTION = false;
         LEFT_RIGHT_DIRECTION = false;
         MotorSpeedMultiplier = 1.0;
