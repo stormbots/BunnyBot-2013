@@ -57,7 +57,7 @@ public class TowerRotate extends Subsystem {
         //setDefaultCommand(new MySpecialCommand());
     }
     
-    public void execute(){
+    public void execute454t6fd5(){//be descriptive
          
         //get the current number of ticks from the encoder
         currentPosition=RobotMap.towerRotateTowerRotateSensor.get();
@@ -118,6 +118,9 @@ public class TowerRotate extends Subsystem {
     }
     public void turnLeft(){
         towerRotateMotor.set(-MOTOR_SPEED);
+    }
+    public void stop(){
+        towerRotateMotor.set(0.0);
     }
     
 }
