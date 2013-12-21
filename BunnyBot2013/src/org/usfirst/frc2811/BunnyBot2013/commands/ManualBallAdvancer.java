@@ -5,6 +5,7 @@
  */
 package org.usfirst.frc2811.BunnyBot2013.commands;
 
+import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.command.Command;
 import org.usfirst.frc2811.BunnyBot2013.OI;
 import org.usfirst.frc2811.BunnyBot2013.Robot;
@@ -15,11 +16,12 @@ import org.usfirst.frc2811.BunnyBot2013.RobotMap;
  * @author Kelson
  */
 public class ManualBallAdvancer extends Command {
-    private 
+    private Joystick js;
     public ManualBallAdvancer() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
         requires(Robot.ballManager);
+       // js = Robot.oi.getJoystick2();
     }
 
     // Called just before this Command runs the first time
@@ -35,7 +37,7 @@ public class ManualBallAdvancer extends Command {
         } else {
             Robot.ballManager.moveBalls(0.0);
         }
-        RobotMap.BallShooterMotor.set();
+        RobotMap.BallShooterMotor.set(0.75);
     }
 
     // Make this return true when this Command no longer needs to run execute()
