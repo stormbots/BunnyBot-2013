@@ -83,7 +83,7 @@ public class RobotMap {
            
         }
         
-        ballShooterShooterSpeedSensor = new Encoder(1, 1, 1, 2, false, EncodingType.k4X);
+        //ballShooterShooterSpeedSensor = new Encoder(1, 1, 1, 2, false, EncodingType.k4X);
 //	LiveWindow.addSensor("BallShooter", "ShooterSpeedSensor", ballShooterShooterSpeedSensor);
         ballShooterShooterSpeedSensor.setDistancePerPulse(1.0);
         ballShooterShooterSpeedSensor.setPIDSourceParameter(PIDSourceParameter.kRate);
@@ -91,7 +91,7 @@ public class RobotMap {
         ballManagerIntakeMotor = new Talon(1, 5);
 //	LiveWindow.addActuator("BallManager", "IntakeMotor", (Talon) ballManagerIntakeMotor);
         
-        ballManagerIntakeSensor = new DigitalInput(1, 3);
+        ballManagerIntakeSensor = new DigitalInput(1, 2);
 //	LiveWindow.addSensor("BallManager", "IntakeSensor", ballManagerIntakeSensor);
         
         ballManagerBallBlocker = new Solenoid(1, 1);
