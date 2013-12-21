@@ -35,7 +35,7 @@ public class TowerRotate extends Subsystem {
     private int encoderAtEndStop ;
     
     //This is the offset. The encoder counts this many ticks betwen 90 degree rotations
-    private int encoder90DegreeOffset;     
+    private int encoder90DegreeOffset=173;     
     private int encoderNeg90Degrees;
     private int encoder0Degrees;
     private int encoder90Degrees;
@@ -45,7 +45,7 @@ public class TowerRotate extends Subsystem {
     
     
     //This is the angle we want to go to
-    public double targetAngle;
+    public double targetAngle=0;
     // Put methods for controlling this subsystem
     // here. Call these from Commands.
 
