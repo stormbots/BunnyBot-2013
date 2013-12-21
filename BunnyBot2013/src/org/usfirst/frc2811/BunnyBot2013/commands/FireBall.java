@@ -18,23 +18,36 @@ import org.usfirst.frc2811.BunnyBot2013.RobotMap;
  *
  */
 public class FireBall extends CommandGroup {
+    public int ballTime;
+    public double fireTime;
+    
     // Called just before this Command runs the first time
     protected void initialize() {
+        RobotMap.ballManagerIntakeMotor.set(1);
+        ballTime = 1;
+        int ballcount = Robot.ballManager.decrementInternalCountDown();
     }
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-        RobotMap.ballManagerIntakeMotor.set(.25);
-         int ballcount = Robot.ballManager.decrementInternalCountDown();
-        // turn on belt thingy
-        //decrese ball count from ball manager
-       
         
+        fireTime = Robot.timer.get();
+        if(fireTime>=ballTime){
+            RobotMap.ballManagerIntakeMotor.set(0);
+            
+        }         
+        // turn on belt thingy
     }
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-        return false;
+        if(fireTime>=ballTime){
+            return true;
+        }
+        else{
+            return false;  
+        }
+                
     }
 
     // Called once after isFinished returns true
@@ -48,7 +61,7 @@ public class FireBall extends CommandGroup {
 
     
     public  FireBall() {
-        
+           
         
     }
 }
