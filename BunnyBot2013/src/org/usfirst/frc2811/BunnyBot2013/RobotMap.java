@@ -32,7 +32,7 @@ public class RobotMap {
     public static RobotDrive chassisRobotDrive41;
   //  public static DoubleSolenoid chassisGearShifter1;
   //  public static DoubleSolenoid chassisGearShifter2;
-  //  public static CANJaguar ballShooterShooterSpeedMotor;
+    public static CANJaguar ballShooterShooterSpeedMotor;
     public static Encoder ballShooterShooterSpeedSensor;
     public static SpeedController ballManagerIntakeMotor;
     public static DigitalInput ballManagerIntakeSensor;
@@ -76,11 +76,12 @@ public class RobotMap {
      //   chassisGearShifter2 = new DoubleSolenoid(1, 4, 5);      
 	
         
-    //    try { 
-    //        ballShooterShooterSpeedMotor = new CANJaguar(2);
-    //    } catch (CANTimeoutException ex) {
-    //    }
-	
+       try {
+            ballShooterShooterSpeedMotor = new CANJaguar(1); // ID number of jaguar
+           
+        } catch (CANTimeoutException ex) {
+           
+        }
         
         ballShooterShooterSpeedSensor = new Encoder(1, 1, 1, 2, false, EncodingType.k4X);
 //	LiveWindow.addSensor("BallShooter", "ShooterSpeedSensor", ballShooterShooterSpeedSensor);

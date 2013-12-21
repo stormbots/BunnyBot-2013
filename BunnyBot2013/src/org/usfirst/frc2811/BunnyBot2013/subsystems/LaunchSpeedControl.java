@@ -16,11 +16,12 @@ import edu.wpi.first.wpilibj.*;
 public class LaunchSpeedControl extends Subsystem {
     // Put methods for controlling this subsystem
     // here. Call these from Commands.
-
+    double[] distance;
     public void initDefaultCommand() {
         // Set the default command for a subsystem here.
         //setDefaultCommand(new MySpecialCommand());
-       double[] distance;
+        //motor power at each feet
+       
                     
          distance = new double[19];
           
@@ -44,11 +45,17 @@ public class LaunchSpeedControl extends Subsystem {
          distance [17] = .90;
          distance [18] = .95;
          distance [19] = 1.00;
-                 
+                
+         
                             
     }
     
-                 
+    public void calculate(double feet){
+        double motorpower;
+        
+        motorpower = distance [(int) feet];
+        RobotMap.ballShooterShooterSpeedMotor.set(motorpower);
+    }             
     //variables
 //    //connstants
 //    double grav = 386.09; //gravity in inches per second 
