@@ -46,7 +46,7 @@ nbproject/private/*
 # The following commands should help with this.
 # git update-index --assume-unchanged.
 # git rm --cached
-
+/BunnyBot2013/build/
 *.suite
 *.mf
 private.xml
