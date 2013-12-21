@@ -42,7 +42,7 @@ public class TowerRotate extends Subsystem {
     public double currentAngle;
     private int currentPosition;
     private double beta;
-    
+    private boolean isHomed=false; //Keep track of whether we've done our homing yet.
     
     //This is the angle we want to go to
     public double targetAngle=0;
@@ -55,9 +55,25 @@ public class TowerRotate extends Subsystem {
 	
         // Set the default command for a subsystem here.
         //setDefaultCommand(new MySpecialCommand());
+        
     }
     
     public void execute(){//be descriptive
+    	
+    	/*
+    	We need a tiny state machine here for homing:
+    	if(isHomed==false){
+    		if(Robot...turretHomeSwitch.get()==CLOSED){
+    			isHome=true;
+    			setHomePositions();
+    		}
+		else{
+			Robot....turretMotor(COUTERCLOCKWISE_SLOWLY);
+		}
+    		
+    	*/
+        
+         
          
         //get the current number of ticks from the encoder
         currentPosition=RobotMap.towerRotateTowerRotateSensor.get();
@@ -77,8 +93,12 @@ public class TowerRotate extends Subsystem {
                 //Ok, so now we're in the normal range
                 //Let's see where we want to be, and where we should be
                 beta=targetAngle-currentAngle;
-                RobotMap.towerRotateTowerRotateMotor.set(beta/180);        
-            
+                RobotMap.towerRotateTowerRotateMotor.set(beta/180);     
+                //We can probably make this faster by dividing it less, and 
+                //capping the value at 1 with some if statements or math functons.
+                
+                
+            //Nieve approach. Don't do this, it's painful.
             /*if(targetAngle<currentAngle){
                     turnLeft();
                 }//go counterclockwise
@@ -109,6 +129,9 @@ public class TowerRotate extends Subsystem {
         //relative rotation to our maximum possible
         //and then multiply by 90 to convert it to degrees
         degrees=((double)ticks*90.0/encoder90DegreeOffset);
+        
+        //This actually should be something like, to acount for the  homing
+        //degrees=( ((double)ticks-encoderAtEndStop)*90.0/encoder90DegreeOffset)
         return degrees;
     }
     
