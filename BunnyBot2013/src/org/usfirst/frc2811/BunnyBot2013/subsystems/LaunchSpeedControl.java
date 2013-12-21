@@ -19,10 +19,9 @@ public class LaunchSpeedControl extends Subsystem {
     double[] distance;
     public void initDefaultCommand() {
         // Set the default command for a subsystem here.
-        //setDefaultCommand(new MySpecialCommand());
+        setDefaultCommand(new SetBallSpeed());
         //motor power at each feet
        
-                    
          distance = new double[19];
           
          distance[0] = .05;
@@ -46,10 +45,10 @@ public class LaunchSpeedControl extends Subsystem {
          distance [18] = .95;
          distance [19] = 1.00;
                 
-         
+      
                             
     }
-    
+       
     public void calculate(double feet){
         double motorpower;
         
