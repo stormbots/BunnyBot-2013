@@ -1,5 +1,6 @@
 /*
- * To change this template, choose Tools | Templates
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
 package org.usfirst.frc2811.BunnyBot2013.commands;
@@ -7,15 +8,17 @@ package org.usfirst.frc2811.BunnyBot2013.commands;
 import edu.wpi.first.wpilibj.command.Command;
 import org.usfirst.frc2811.BunnyBot2013.OI;
 import org.usfirst.frc2811.BunnyBot2013.Robot;
-import org.usfirst.frc2811.BunnyBot2013.RobotMap;
+import org.usfirst.frc2811.BunnyBot2013.subsystems.Chassis;
 
 /**
  *
  * @author Kelson
  */
-public class JoystickDriveControl extends Command {
+public class ShiftToggle extends Command {
+    private boolean isDone;
     
-    public JoystickDriveControl() {
+    public ShiftToggle() {
+        isDone = false;
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
         requires(Robot.chassis);
@@ -27,21 +30,25 @@ public class JoystickDriveControl extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-        Robot.chassis.JoystickControl(Robot.oi.getJoystick());
-        
+        if (!isDone) {
+            Robot.chassis.normalShift();
+            isDone = true;
+        }
     }
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-        return false;
+        return !OI.shiftButton.get();
     }
 
     // Called once after isFinished returns true
     protected void end() {
+        isDone = false;
     }
 
     // Called when another command which requires one or more of the same
     // subsystems is scheduled to run
     protected void interrupted() {
+        isDone = false;
     }
 }

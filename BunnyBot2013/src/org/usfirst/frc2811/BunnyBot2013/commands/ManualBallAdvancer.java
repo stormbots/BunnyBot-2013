@@ -1,5 +1,6 @@
 /*
- * To change this template, choose Tools | Templates
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
 package org.usfirst.frc2811.BunnyBot2013.commands;
@@ -13,12 +14,12 @@ import org.usfirst.frc2811.BunnyBot2013.RobotMap;
  *
  * @author Kelson
  */
-public class JoystickDriveControl extends Command {
-    
-    public JoystickDriveControl() {
+public class ManualBallAdvancer extends Command {
+    private 
+    public ManualBallAdvancer() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
-        requires(Robot.chassis);
+        requires(Robot.ballManager);
     }
 
     // Called just before this Command runs the first time
@@ -27,8 +28,14 @@ public class JoystickDriveControl extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-        Robot.chassis.JoystickControl(Robot.oi.getJoystick());
-        
+        if (OI.BallAdvanceButton.get()){
+            Robot.ballManager.moveBalls(1.0);//assuming 1 is forwards
+        } else if (OI.BallReverseButton.get()){
+            Robot.ballManager.moveBalls(-1.0);
+        } else {
+            Robot.ballManager.moveBalls(0.0);
+        }
+        RobotMap.BallShooterMotor.set();
     }
 
     // Make this return true when this Command no longer needs to run execute()
