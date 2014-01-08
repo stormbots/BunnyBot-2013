@@ -14,7 +14,7 @@ package org.usfirst.frc2811.BunnyBot2013.subsystems;
 import org.usfirst.frc2811.BunnyBot2013.RobotMap;
 import org.usfirst.frc2811.BunnyBot2013.commands.*;
 import edu.wpi.first.wpilibj.*;
-import edu.wpi.first.wpilibj.CounterBase.EncodingType; import edu.wpi.first.wpilibj.Encoder.PIDSourceParameter;
+//import edu.wpi.first.wpilibj.CounterBase.EncodingType; import edu.wpi.first.wpilibj.Encoder.PIDSourceParameter;
 
 import edu.wpi.first.wpilibj.command.Subsystem;
 

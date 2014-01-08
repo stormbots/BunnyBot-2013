@@ -5,23 +5,21 @@
  */
 package org.usfirst.frc2811.BunnyBot2013.commands;
 
-import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.command.Command;
-import org.usfirst.frc2811.BunnyBot2013.OI;
 import org.usfirst.frc2811.BunnyBot2013.Robot;
-import org.usfirst.frc2811.BunnyBot2013.RobotMap;
+import org.usfirst.frc2811.BunnyBot2013.subsystems.RabbitPusher;
 
 /**
  *
  * @author Kelson
  */
-public class ManualBallAdvancer extends Command {
-    private Joystick js;
-    public ManualBallAdvancer() {
+public class PushBunny extends Command {
+    boolean hi;
+    public PushBunny(boolean input) {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
-        requires(Robot.ballManager);
-       // js = Robot.oi.getJoystick2();
+        //requires(Robot.rabbitPusher);
+        hi = input;
     }
 
     // Called just before this Command runs the first time
@@ -30,19 +28,12 @@ public class ManualBallAdvancer extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-        if (OI.BallAdvanceButton.get()){
-            Robot.ballManager.moveBalls(1.0);//assuming 1 is forwards
-        } else if (OI.BallReverseButton.get()){
-            Robot.ballManager.moveBalls(-1.0);
-        } else {
-            Robot.ballManager.moveBalls(0.0);
-        }
-       // RobotMap.BallShooterMotor.set(0.75);
+        Robot.rabbitPusher.pushRabbit(hi);
     }
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-        return false;
+        return true;
     }
 
     // Called once after isFinished returns true

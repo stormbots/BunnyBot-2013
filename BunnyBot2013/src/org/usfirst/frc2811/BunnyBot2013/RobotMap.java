@@ -13,7 +13,7 @@ package org.usfirst.frc2811.BunnyBot2013;
     
 import edu.wpi.first.wpilibj.*;
 import edu.wpi.first.wpilibj.CounterBase.EncodingType;
-import edu.wpi.first.wpilibj.Encoder.PIDSourceParameter;
+//import edu.wpi.first.wpilibj.Encoder.PIDSourceParameter;
 import edu.wpi.first.wpilibj.can.*;
 
 /**
@@ -44,11 +44,20 @@ public class RobotMap {
     
     public static SpeedController BallShooterMotor;
     
+    public static DigitalInput hallEffectSensor;
+    
     
     public static DigitalInput compin;
     public static Relay compout;
+    public static Jaguar ballShooterShooterRotateMotor;
+    
+    public static double encoderZeroAngle;
     
     public static void init() {
+        encoderZeroAngle = 0.0;
+        
+        ballShooterShooterRotateMotor = new Jaguar(1,7);
+        hallEffectSensor = new DigitalInput(1,2);
         
         BallShooterMotor = new Jaguar(1,8);
         
@@ -88,11 +97,11 @@ public class RobotMap {
         //}
 	
         
-        ballShooterShooterSpeedSensor = new Encoder(1, 1, 1, 2, false, EncodingType.k4X);
+       // ballShooterShooterSpeedSensor = new Encoder(1, 1, 1, 2, false, EncodingType.k4X);
 //	LiveWindow.addSensor("BallShooter", "ShooterSpeedSensor", ballShooterShooterSpeedSensor);
-        ballShooterShooterSpeedSensor.setDistancePerPulse(1.0);
-        ballShooterShooterSpeedSensor.setPIDSourceParameter(PIDSourceParameter.kRate);
-        ballShooterShooterSpeedSensor.start();
+      //  ballShooterShooterSpeedSensor.setDistancePerPulse(1.0);
+     //   ballShooterShooterSpeedSensor.setPIDSourceParameter(PIDSourceParameter.kRate);
+     //   ballShooterShooterSpeedSensor.start();
         ballManagerIntakeMotor1 = new Jaguar(1, 5);
         ballManagerIntakeMotor2 = new Jaguar(1, 6);
 //	LiveWindow.addActuator("BallManager", "IntakeMotor", (Talon) ballManagerIntakeMotor);
@@ -106,15 +115,16 @@ public class RobotMap {
         ballManagerClimberMotor = new Jaguar(1, 9);
 //	LiveWindow.addActuator("BallManager", "ClimberMotor", (Talon) ballManagerClimberMotor);
         
-        ballManagerBallExitSensor = new DigitalInput(1, 6);
+        //ballManagerBallExitSensor = new DigitalInput(1, 6);
 //	LiveWindow.addSensor("BallManager", "BallExitSensor", ballManagerBallExitSensor);
         
-        towerRotateTowerRotateSensor = new Encoder(1, 4, 1, 5, false, EncodingType.k4X);
-//	LiveWindow.addSensor("TowerRotate", "TowerRotateSensor", towerRotateTowerRotateSensor);
-        towerRotateTowerRotateSensor.setDistancePerPulse(1.0);
-        towerRotateTowerRotateSensor.setPIDSourceParameter(PIDSourceParameter.kRate);
+        towerRotateTowerRotateSensor = new Encoder(1, 7, 1, 8, false, EncodingType.k4X);
         towerRotateTowerRotateSensor.start();
-        towerRotateTowerRotateMotor = new Talon(1, 7);
+//	LiveWindow.addSensor("TowerRotate", "TowerRotateSensor", towerRotateTowerRotateSensor);
+       // towerRotateTowerRotateSensor.setDistancePerPulse(1.0);
+       // towerRotateTowerRotateSensor.setPIDSourceParameter(PIDSourceParameter.kRate);
+       // towerRotateTowerRotateSensor.start();
+        //towerRotateTowerRotateMotor = new Talon(1, 7);
 //	LiveWindow.addActuator("TowerRotate", "TowerRotateMotor", (Talon) towerRotateTowerRotateMotor);
         
   

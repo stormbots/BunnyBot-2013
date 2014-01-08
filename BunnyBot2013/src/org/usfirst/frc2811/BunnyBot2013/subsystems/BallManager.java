@@ -37,7 +37,7 @@ public class BallManager extends Subsystem {
         updateMotors();
     }
     public void updateMotors(){
-        ballBlocker.set(UpDown);
+        ballBlocker.set(!UpDown);
         if (UpDown) {
             intakeMotor1.set(0.0);
             intakeMotor2.set(0.0);

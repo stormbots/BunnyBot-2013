@@ -5,9 +5,7 @@
  */
 package org.usfirst.frc2811.BunnyBot2013.commands;
 
-import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.command.Command;
-import org.usfirst.frc2811.BunnyBot2013.OI;
 import org.usfirst.frc2811.BunnyBot2013.Robot;
 import org.usfirst.frc2811.BunnyBot2013.RobotMap;
 
@@ -15,13 +13,11 @@ import org.usfirst.frc2811.BunnyBot2013.RobotMap;
  *
  * @author Kelson
  */
-public class ManualBallAdvancer extends Command {
-    private Joystick js;
-    public ManualBallAdvancer() {
+public class FindStops extends Command {
+    
+    public FindStops() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
-        requires(Robot.ballManager);
-       // js = Robot.oi.getJoystick2();
     }
 
     // Called just before this Command runs the first time
@@ -30,23 +26,23 @@ public class ManualBallAdvancer extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-        if (OI.BallAdvanceButton.get()){
-            Robot.ballManager.moveBalls(1.0);//assuming 1 is forwards
-        } else if (OI.BallReverseButton.get()){
-            Robot.ballManager.moveBalls(-1.0);
+        if (RobotMap.hallEffectSensor.get()){
+            Robot.ballShooter.turnTurretLeft();
         } else {
-            Robot.ballManager.moveBalls(0.0);
+            Robot.ballShooter.turnTurretStop();
+            RobotMap.encoderZeroAngle = RobotMap.towerRotateTowerRotateSensor.getDistance();
         }
-       // RobotMap.BallShooterMotor.set(0.75);
     }
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-        return false;
+        return RobotMap.hallEffectSensor.get();
     }
 
     // Called once after isFinished returns true
     protected void end() {
+        Robot.ballShooter.turnTurretStop();
+        
     }
 
     // Called when another command which requires one or more of the same

@@ -9,19 +9,20 @@ import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.command.Command;
 import org.usfirst.frc2811.BunnyBot2013.OI;
 import org.usfirst.frc2811.BunnyBot2013.Robot;
-import org.usfirst.frc2811.BunnyBot2013.RobotMap;
 
 /**
  *
  * @author Kelson
  */
-public class ManualBallAdvancer extends Command {
-    private Joystick js;
-    public ManualBallAdvancer() {
+public class turnTurret extends Command {
+    Joystick a;
+    boolean joystickcontrol;
+    public turnTurret() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
-        requires(Robot.ballManager);
-       // js = Robot.oi.getJoystick2();
+        requires(Robot.ballShooter);
+        a = Robot.oi.getJoystick2();
+        joystickcontrol = false;
     }
 
     // Called just before this Command runs the first time
@@ -30,14 +31,24 @@ public class ManualBallAdvancer extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-        if (OI.BallAdvanceButton.get()){
-            Robot.ballManager.moveBalls(1.0);//assuming 1 is forwards
-        } else if (OI.BallReverseButton.get()){
-            Robot.ballManager.moveBalls(-1.0);
+        if (joystickcontrol) {
+            Robot.ballShooter.manualTurretRotate(a.getRawAxis(2));
+            
         } else {
-            Robot.ballManager.moveBalls(0.0);
+            if (OI.turretLeft.get()) {
+                Robot.ballShooter.turnTurretLeft();
+            } else if (OI.turretRight.get()){
+                Robot.ballShooter.turnTurretRight();
+            } else {
+                Robot.ballShooter.turnTurretStop();
+            }
         }
-       // RobotMap.BallShooterMotor.set(0.75);
+        if (!OI.reverseShooter.get()){
+            Robot.ballShooter.manualSpeedontrol(0.2+(-a.getRawAxis(3)+1)/2*(OI.overVoltShooter.get()?0.8:0.3));
+
+        } else {
+            Robot.ballShooter.manualSpeedontrol(-0.75);
+        }
     }
 
     // Make this return true when this Command no longer needs to run execute()
